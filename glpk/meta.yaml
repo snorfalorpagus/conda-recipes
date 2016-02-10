@@ -1,0 +1,25 @@
+package:
+  name: glpk
+  version: "4.57"
+
+source:
+  fn: winglpk-4.57.zip [win]
+  url: http://sourceforge.net/projects/winglpk/files/winglpk/GLPK-4.57/winglpk-4.57.zip [win]
+  md5: a5499826047a72df83203e983a762a0d [win]
+  sha1: 5964212189e6644a8c23fa1a9cf35b5a80e7eb44 [win]
+  sha256: a5e7379e8f8641d04add1507720ee35a1ec4717288ec590f7913ab1e00b65ede [win]
+
+build:
+  number: 0
+
+test:
+  files:
+    - plan.mps
+  commands:
+    - glpsol --mps plan.mps
+
+about:
+  home: https://www.gnu.org/software/glpk/
+  license: GPL
+  license_file: COPYING
+  summary: The GLPK (GNU Linear Programming Kit) package is intended for solving large-scale linear programming (LP), mixed integer programming (MIP), and other related problems. It is a set of routines written in ANSI C and organized in the form of a callable library.
