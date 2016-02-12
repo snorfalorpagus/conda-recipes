@@ -22,6 +22,8 @@ requirements:
     - pandas
     - networkx
     - glpk
+    - pytables
+    - xlrd
 
 test:
   imports:
