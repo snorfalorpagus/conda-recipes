@@ -8,6 +8,12 @@ source:
   md5: a5499826047a72df83203e983a762a0d [win]
   sha1: 5964212189e6644a8c23fa1a9cf35b5a80e7eb44 [win]
   sha256: a5e7379e8f8641d04add1507720ee35a1ec4717288ec590f7913ab1e00b65ede [win]
+  
+  fn: glpk-4.57.tar.gz [not win]
+  url: http://ftp.gnu.org/gnu/glpk/glpk-4.57.tar.gz [not win]
+  md5: 237531a54f73155842f8defe51aedb0f [not win]
+  sha1: d2df2de59798c35024df8d140a53453e29a095be [not win]
+  sha256: 7323b2a7cc1f13e45fc845f0fdca74f4daea2af716f5ad2d4d55b41e8394275c [not win]
 
 build:
   number: 0
@@ -15,8 +21,12 @@ build:
 test:
   files:
     - plan.mps
+    - version.c
   commands:
     - glpsol --mps plan.mps
+
+    - "cc version.c -I$PREFIX/include -L$PREFIX/lib -lglpk -o version" [not win]
+    - LD_LIBRARY_PATH=$PREFIX/lib ./version [not win]
 
 about:
   home: https://www.gnu.org/software/glpk/
